@@ -5,7 +5,7 @@ namespace EShop_React.Command
 {
     public class LoginCommand : IRequest<ResponseDto>
     {
-        public string? Email { get; init; }
-        public string? Password { get; init; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
     }
 }

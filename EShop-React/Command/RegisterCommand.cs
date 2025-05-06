@@ -5,9 +5,9 @@ namespace EShop_React.Commands
 {
     public class RegisterCommand : IRequest<ResponseDto>
     {
-        public string? Email { get; init; }
-        public string? Name { get; init; }
-        public string? Password { get; init; }
-        public string Role { get; init; } = "Customer";
+        public string? Email { get; set; }
+        public string? Name { get; set; }
+        public string? Password { get; set; }
+        public string Role { get; set; } = "Customer";
     }
 }

@@ -25,6 +25,7 @@ namespace EShop_React.Repositories
             {
                 if (!_roleManager.RoleExistsAsync(registerCommand.Role).GetAwaiter().GetResult())
                 {
+                    registerCommand.Role = char.ToUpper(registerCommand.Role[0]) + registerCommand.Role.Substring(1).ToLower(); ;
                     _roleManager.CreateAsync(new IdentityRole(registerCommand.Role)).GetAwaiter().GetResult();
                 }
 
