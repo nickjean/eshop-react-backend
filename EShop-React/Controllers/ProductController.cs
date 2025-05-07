@@ -21,7 +21,7 @@ namespace EShop_React.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPost("add-product")]
+        [HttpPost("admin-add-product")]
         public async Task<IActionResult> AddProduct([FromBody] AddProductCommand productCommand) 
         {
             var response = await _mediator.Send(productCommand);

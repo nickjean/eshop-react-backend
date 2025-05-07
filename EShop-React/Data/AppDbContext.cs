@@ -15,6 +15,8 @@ namespace EShop_React.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Wishlist> Wishlists { get; set; }
+        public DbSet<WishlistProduct> WishlistProducts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +40,26 @@ namespace EShop_React.Data
                 .WithMany(u => u.Orders)
                 .HasForeignKey(o => o.ApplicationUserId)
                 .OnDelete(DeleteBehavior.Restrict); // Or Cascade if desired
+
+            // Configure Wishlist ↔ Product (many-to-many)
+            modelBuilder.Entity<WishlistProduct>()
+            .HasKey(wp => new { wp.Id, wp.ProductId });
+
+            modelBuilder.Entity<WishlistProduct>()
+                .HasOne(wp => wp.Wishlist)
+                .WithMany(w => w.WishlistProducts)
+                .HasForeignKey(wp => wp.Id);
+
+            modelBuilder.Entity<WishlistProduct>()
+                .HasOne(wp => wp.Product)
+                .WithMany(p => p.WishlistProducts)
+                .HasForeignKey(wp => wp.ProductId);
+
+            // Configure Wishlist ↔ ApplicationUser (many-to-one)
+            modelBuilder.Entity<Wishlist>()
+                .HasOne(w => w.ApplicationUser)
+                .WithMany(u => u.Wishlists)
+                .HasForeignKey(w => w.ApplicationUserId);
         }
     }
 }

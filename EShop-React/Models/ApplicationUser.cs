@@ -6,5 +6,6 @@ namespace EShop_React.Models
     {
         public string Name { get; set; }
         public ICollection<Order> Orders { get; set; }
+        public ICollection<Wishlist> Wishlists { get; set; }
     }
 }
