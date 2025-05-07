@@ -17,8 +17,8 @@ namespace EShop_React.Controllers
             return Ok();
         }
 
-        [HttpPut("{whistlistId}/{productId}")]
-        public async Task<IActionResult> EditWishlist(int whistlistId, int productId)
+        [HttpPut("add-product-wishlist/{userId}/{whistlistId}/{productId}")]
+        public async Task<IActionResult> EditWishlist(string userId, int whistlistId, int productId)
         {
             return Ok();
         }
