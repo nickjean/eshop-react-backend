@@ -2,6 +2,7 @@
 using EShop_React.Data;
 using EShop_React.Models;
 using EShop_React.Repositories.Interface;
+using EShop_React.Utility;
 using Microsoft.AspNetCore.Identity;
 
 namespace EShop_React.Repositories
@@ -25,7 +26,7 @@ namespace EShop_React.Repositories
             {
                 if (!_roleManager.RoleExistsAsync(registerCommand.Role).GetAwaiter().GetResult())
                 {
-                    registerCommand.Role = char.ToUpper(registerCommand.Role[0]) + registerCommand.Role.Substring(1).ToLower(); ;
+                    registerCommand.Role = Capitalize.CapitalizeFirstLetter(registerCommand.Role);
                     _roleManager.CreateAsync(new IdentityRole(registerCommand.Role)).GetAwaiter().GetResult();
                 }
 

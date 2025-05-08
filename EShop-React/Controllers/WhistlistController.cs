@@ -23,8 +23,8 @@ namespace EShop_React.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProductInWhistlist(int id)
+        [HttpDelete("whistlist-product/{productId}")]
+        public async Task<IActionResult> DeleteProductInWhistlist(int productId)
         {
             return Ok();
         }

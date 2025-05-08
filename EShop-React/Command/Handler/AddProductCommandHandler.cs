@@ -3,6 +3,7 @@ using EShop_React.Commands;
 using EShop_React.Models;
 using EShop_React.Models.Dtos;
 using EShop_React.Repositories.Interface;
+using EShop_React.Utility;
 using MediatR;
 
 namespace EShop_React.Command.Handler
@@ -23,6 +24,7 @@ namespace EShop_React.Command.Handler
             try
             {
                 var product = _mapper.Map<Product>(command);
+                product.Color = Capitalize.CapitalizeFirstLetter(command.Color);
                 await _productRepository.CreateProduct(product);
             }
             catch (Exception)
